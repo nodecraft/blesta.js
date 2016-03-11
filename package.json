@@ -1,0 +1,23 @@
+{
+  "name": "blesta",
+  "version": "0.0.1",
+  "description": "Unoffical API Wrapper for the Blesta billing platform",
+  "main": "blesta.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blesta",
+    "billing",
+    "rest",
+    "wrapper",
+    "json"
+  ],
+  "author": "NodeCraft Hosting LLC",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "moment": "^2.12.0",
+    "request": "^2.69.0"
+  }
+}
