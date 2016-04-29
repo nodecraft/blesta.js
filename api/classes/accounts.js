@@ -11,75 +11,75 @@ module.exports = function(blesta){
 
 	return {
 		getListCc: function(contact_id, data, callback){
-			return blesta.request('get', 'clients/getListCc', _.defaults({
+			return blesta.request('get', 'accounts/getListCc', _.defaults({
 				client_id: contact_id
 			}, _.pick(data, ['sortby', 'order'])), callback);
 		},
 		getAllCc: function(contact_id, callback){
-			return blesta.request('get', 'clients/getAllCc', {
+			return blesta.request('get', 'accounts/getAllCc', {
 				client_id: contact_id
 			}, callback);
 		},
 		getAllCcByClient: function(client_id, callback){
-			return blesta.request('get', 'clients/getAllCcByClient', {
+			return blesta.request('get', 'accounts/getAllCcByClient', {
 				client_id: client_id
 			}, callback);
 		},
 		getCc: function(account_id, data, callback){
-			return blesta.request('get', 'clients/getCc', _.defaults({
+			return blesta.request('get', 'accounts/getCc', _.defaults({
 				client_id: client_id
 			}, _.pick(data, ['decrypt', 'passphrase', 'staff_id'])), callback);
 		},
 		getClientReferenceId: function(client_id, gateway_id, callback){
-			return blesta.request('get', 'clients/getClientReferenceId', {
+			return blesta.request('get', 'accounts/getClientReferenceId', {
 				client_id: client_id,
 				gateway_id: gateway_id
 			}, callback);
 		},
 		addCc: function(vars, callback){
-			return blesta.request('put', 'clients/addCc', {
+			return blesta.request('put', 'accounts/addCc', {
 				vars: vars
 			}, callback);
 		},
 		verifyCc: function(vars, callback){
-			return blesta.request('post', 'clients/verifyCc', {
+			return blesta.request('post', 'accounts/verifyCc', {
 				vars: vars
 			}, callback);
 		},
 		editCc: function(account_id, vars, callback){
-			return blesta.request('post', 'clients/editCc', {
+			return blesta.request('post', 'accounts/editCc', {
 				account_id: account_id,
 				vars: vars
 			}, callback);
 		},
 		deleteCc: function(account_id, callback){
-			return blesta.request('delete', 'clients/deleteCc', {
+			return blesta.request('delete', 'accounts/deleteCc', {
 				account_id: account_id
 			}, callback);
 		},
 		getCardsExpireSoon: function(date){
-			return blesta.request('get', 'clients/getCardsExpireSoon', {
+			return blesta.request('get', 'accounts/getCardsExpireSoon', {
 				date: blesta.createDate(date)
 			}, callback);
 		},
 		getTypes: function(){
-			return blesta.request('get', 'clients/getTypes', callback);
+			return blesta.request('get', 'accounts/getTypes', callback);
 		},
 		getCcTypes: function(){
-			return blesta.request('get', 'clients/getCcTypes', callback);
+			return blesta.request('get', 'accounts/getCcTypes', callback);
 		},
 		validateCcType: function(type){
-			return blesta.request('post', 'clients/validateCcType', {
+			return blesta.request('post', 'accounts/validateCcType', {
 				type: type
 			}, callback);
 		},
 		creditCardType: function(card_number){
-			return blesta.request('post', 'clients/creditCardType', {
+			return blesta.request('post', 'accounts/creditCardType', {
 				card_number: card_number
 			}, callback);
 		},
 		luhnValid: function(card_number ){
-			return blesta.request('post', 'clients/luhnValid', {
+			return blesta.request('post', 'accounts/luhnValid', {
 				card_number : card_number 
 			}, callback);
 		}

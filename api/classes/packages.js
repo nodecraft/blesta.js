@@ -13,12 +13,12 @@ module.exports = function(blesta){
 		get: function(package_id, callback){
 			return blesta.request('get', 'packages/get', {
 				package_id: package_id
-			} callback);
+			}, callback);
 		},
 		getByPricingId: function(package_pricing_id, callback){
 			return blesta.request('get', 'packages/getByPricingId', {
 				package_pricing_id: package_pricing_id
-			} callback);
+			}, callback);
 		},
 		getAll: function(company_id, data, callback){
 			if(data && !callback){

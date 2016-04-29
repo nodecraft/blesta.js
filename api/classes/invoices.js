@@ -91,7 +91,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'invoices/getList', _.defaults({
-				client_id : client_id 
+				client_id: client_id 
 			}, _.pick(data, ['status', 'page', 'order_by'])), callback);
 		},
 		getListCount: function(client_id, data, callback){
@@ -100,7 +100,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'invoices/getListCount', _.defaults({
-				client_id : client_id 
+				client_id: client_id 
 			}, _.pick(data, ['status'])), callback);
 		},
 		getAll: function(client_id, data, callback){
@@ -109,7 +109,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'invoices/getAll', _.defaults({
-				client_id : client_id 
+				client_id: client_id 
 			}, _.pick(data, ['status', 'currency', 'order_by'])), callback);
 		},
 		getAllWithService: function(client_id, service_id, data, callback){
@@ -118,7 +118,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'invoices/getAllWithService', _.defaults({
-				client_id : client_id 
+				client_id: client_id 
 			}, _.pick(data, ['status', 'order_by'])), callback);
 		},
 		search: function(query, data, callback){
@@ -127,46 +127,46 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'invoices/search', _.defaults({
-				query : query 
+				query: query 
 			}, _.pick(data, ['page'])), callback);
 		},
 		getSearchCount: function(query, callback){
 			return blesta.request('get', 'invoices/getSearchCount', {
-				query : query 
+				query: query 
 			}, callback);
 		},
-		getAllRecurring: function(client_id callback){
+		getAllRecurring: function(client_id, callback){
 			return blesta.request('get', 'invoices/getAllRecurring', {
-				client_id : client_id 
+				client_id: client_id 
 			}, callback);
 		},
-		getAllRenewingRecurring: function(client_group_id  callback){
+		getAllRenewingRecurring: function(client_group_id, callback){
 			return blesta.request('get', 'invoices/getAllRenewingRecurring', {
-				client_group_id  : client_group_id  
+				client_group_id: client_group_id  
 			}, callback);
 		},
-		getRecurringList: function(client_id  data, callback){
+		getRecurringList: function(client_id, data, callback){
 			if(data && !callback){
 				callback = data;
 				data = {};
 			}
 			return blesta.request('get', 'invoices/getRecurringList', _.defaults({
-				client_id : client_id 
+				client_id: client_id 
 			}, _.pick(data, ['page', 'order'])), callback);
 		},
-		getRecurringListCount: function(client_id  callback){
+		getRecurringListCount: function(client_id, callback){
 			return blesta.request('get', 'invoices/getRecurringListCount', {
-				client_id : client_id 
+				client_id: client_id 
 			}, callback);
 		},
-		getRecurringInfo: function(invoice_id  callback){
+		getRecurringInfo: function(invoice_id, callback){
 			return blesta.request('get', 'invoices/getRecurringInfo', {
-				invoice_id : invoice_id 
+				invoice_id: invoice_id 
 			}, callback);
 		},
-		getAutodebitDate: function(invoice_id  callback){
+		getAutodebitDate: function(invoice_id, callback){
 			return blesta.request('get', 'invoices/getAutodebitDate', {
-				invoice_id : invoice_id 
+				invoice_id: invoice_id 
 			}, callback);
 		},
 		createPayHash: function(client_id, invoice_id, callback){

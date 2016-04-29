@@ -49,16 +49,16 @@ var blesta = function(options){
 	};
 
 	this.error = function(code, data){
-		var data = data || {};
-		Error.captureStackTrace(this, this.constructor);
+		//Error.captureStackTrace(this, this.constructor);
 		if(!this.errors[code]){
 			throw new Error('Invalid error code `'+ code + '` provided.');
 		}
-		var error = this.errors[code];
-		this.name = 'blestaError';
-		this.code = data.code || error.code;
-		this.message = data.message || error.message;
-		this.data = _.omit(data, ['code', 'message']);
+		var error = new Error(this.errors[code]);
+		error.name = 'blestaError';
+		error.code = code;
+		error.message = this.errors[code];
+		error.data = data || {};
+		return error;
 	}
 
 	this.request = function(method, url, body, callback){
@@ -84,7 +84,6 @@ var blesta = function(options){
 		}
 
 		return request(req, function(err, res, body){
-			//console.log('body', body);
 			switch(res.statusCode){
 				case 400:
 					return callback(self.error('blesta.bad_request', body));
@@ -96,6 +95,7 @@ var blesta = function(options){
 					return callback(self.error('blesta.forbidden', body));
 				break;
 				case 404:
+					body.url = req.url;
 					return callback(self.error('blesta.not_found', body));
 				break;
 				case 415:
