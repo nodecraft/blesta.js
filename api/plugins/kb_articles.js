@@ -26,12 +26,14 @@ module.exports = function(blesta){
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbArticles/getAll', _.pick(data, ['company_id', 'category_id', 'access']), callback);
 		},
-		getPopular: function(data, callback){
+		getPopular: function(company_id, data, callback){
 			if(data && !callback){
 				callback = data;
 				data = {};
 			}
-			return blesta.request('get', 'support_manager.SupportManagerKbArticles/getPopular', _.pick(data, ['company_id', 'category_id', 'access', 'max_articles']), callback);
+			return blesta.request('get', 'support_manager.SupportManagerKbArticles/getPopular', _.defaults({
+				company_id: company_id
+			}, _.pick(data, ['category_id', 'access', 'max_articles'])), callback);
 		},
 		search: function(company_id, query, data, callback){
 			if(data && !callback){

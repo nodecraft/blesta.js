@@ -123,8 +123,8 @@ var blesta = function(options){
 
 
 	var self = this;
-	_.each(fs.readdirSync('./api'), function(folder){
-		var dir = './api/' + folder;
+	_.each(fs.readdirSync(__dirname + '/api'), function(folder){
+		var dir = __dirname + '/api/' + folder;
 		_.each(fs.readdirSync(dir), function(file){
 			self[path.basename(file, '.js')] = require(dir + '/' + file)(self);
 		});

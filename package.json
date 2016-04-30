@@ -1,6 +1,6 @@
 {
   "name": "blesta",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Unoffical API Wrapper for the Blesta billing platform",
   "main": "blesta.js",
   "scripts": {
