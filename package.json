@@ -1,6 +1,6 @@
 {
   "name": "blesta",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Unoffical API Wrapper for the Blesta billing platform",
   "main": "blesta.js",
   "scripts": {
@@ -16,8 +16,8 @@
   "author": "NodeCraft Hosting LLC",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.6.1",
-    "moment": "^2.12.0",
-    "request": "^2.69.0"
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
+    "request": "^2.72.0"
   }
 }

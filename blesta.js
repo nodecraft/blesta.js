@@ -82,7 +82,6 @@ var blesta = function(options){
 		}else if(body){
 			req.form = body;
 		}
-
 		return request(req, function(err, res, body){
 			switch(res.statusCode){
 				case 400:

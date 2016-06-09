@@ -24,7 +24,7 @@ module.exports = function(blesta){
 		},
 		get: function(package_group_id , callback){
 			return blesta.request('get', 'packageGroups/get', {
-				package_group_id : package_group_id 
+				package_group_id : package_group_id
 			}, callback);
 		},
 		getAll: function(company_id, data, callback){
@@ -32,16 +32,7 @@ module.exports = function(blesta){
 				callback = data;
 				data = {};
 			}
-			return blesta.request('get', 'packageGroups/getTypeCount', _.defaults({
-				company_id: company_id
-			}, _.pick(data, ['type'])), callback);
-		},
-		getAll: function(company_id, data, callback){
-			if(data && !callback){
-				callback = data;
-				data = {};
-			}
-			return blesta.request('get', 'packageGroups/getTypeCount', _.defaults({
+			return blesta.request('get', 'packageGroups/getAll', _.defaults({
 				company_id: company_id
 			}, _.pick(data, ['page', 'type', 'order_by'])), callback);
 		},
