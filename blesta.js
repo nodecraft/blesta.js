@@ -53,11 +53,14 @@ var blesta = function(options){
 		if(!this.errors[code]){
 			throw new Error('Invalid error code `'+ code + '` provided.');
 		}
-		var error = new Error(this.errors[code]);
+		var message = this.errors[code];
+		if(data && data.message){
+			message = data.message;
+		}
+		var error = new Error(message);
 		error.name = 'blestaError';
 		error.code = code;
-		error.message = this.errors[code];
-		error.data = data || {};
+		error.data = _.omit(data || {}, ['message']);
 		return error;
 	}
 
@@ -110,6 +113,9 @@ var blesta = function(options){
 					var response = body.response;
 					if(response && response.settings){
 						delete response.settings;
+					}
+					if(!response || response === undefined){
+						return callback(self.error('blesta.error'));
 					}
 					return callback(null, response, res);
 				break;

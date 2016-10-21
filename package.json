@@ -1,24 +1,27 @@
 {
-  "name": "blesta",
-  "version": "0.1.1",
-  "description": "Unoffical API Wrapper for the Blesta billing platform",
-  "url": "https://github.com/nodecraft/blesta.js",
-  "main": "blesta.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "blesta",
-    "billing",
-    "rest",
-    "wrapper",
-    "json"
-  ],
-  "author": "NodeCraft Hosting LLC",
-  "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.16.4",
-    "moment": "^2.15.1",
-    "request": "^2.75.0"
-  }
+	"name": "blesta",
+	"version": "0.1.2",
+	"description": "Unofficial API Wrapper for the Blesta billing platform",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/npm/npm.git"
+	},
+	"main": "blesta.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"blesta",
+		"billing",
+		"rest",
+		"wrapper",
+		"json"
+	],
+	"author": "NodeCraft Hosting LLC",
+	"license": "MIT",
+	"dependencies": {
+		"lodash": "^4.16.4",
+		"moment": "^2.15.1",
+		"request": "^2.75.0"
+	}
 }
