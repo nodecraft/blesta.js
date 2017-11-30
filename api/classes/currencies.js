@@ -78,5 +78,5 @@ module.exports = function(blesta){
 		updateRates: function(callback){
 			return blesta.request('post', 'currencies/updateRates', callback);
 		}
-	}
-}
+	};
+};

@@ -27,7 +27,7 @@ module.exports = function(blesta){
 		},
 		getCc: function(account_id, data, callback){
 			return blesta.request('get', 'accounts/getCc', _.defaults({
-				client_id: client_id
+				account_id: account_id
 			}, _.pick(data, ['decrypt', 'passphrase', 'staff_id'])), callback);
 		},
 		getClientReferenceId: function(client_id, gateway_id, callback){
@@ -57,30 +57,30 @@ module.exports = function(blesta){
 				account_id: account_id
 			}, callback);
 		},
-		getCardsExpireSoon: function(date){
+		getCardsExpireSoon: function(date, callback){
 			return blesta.request('get', 'accounts/getCardsExpireSoon', {
 				date: blesta.createDate(date)
 			}, callback);
 		},
-		getTypes: function(){
+		getTypes: function(callback){
 			return blesta.request('get', 'accounts/getTypes', callback);
 		},
-		getCcTypes: function(){
+		getCcTypes: function(callback){
 			return blesta.request('get', 'accounts/getCcTypes', callback);
 		},
-		validateCcType: function(type){
+		validateCcType: function(type, callback){
 			return blesta.request('post', 'accounts/validateCcType', {
 				type: type
 			}, callback);
 		},
-		creditCardType: function(card_number){
+		creditCardType: function(card_number, callback){
 			return blesta.request('post', 'accounts/creditCardType', {
 				card_number: card_number
 			}, callback);
 		},
-		luhnValid: function(card_number ){
+		luhnValid: function(card_number, callback){
 			return blesta.request('post', 'accounts/luhnValid', {
-				card_number : card_number 
+				card_number: card_number
 			}, callback);
 		}
 	};

@@ -13,11 +13,6 @@ module.exports = function(blesta){
 				vars: vars
 			}, callback);
 		},
-		create: function(vars, callback){
-			return blesta.request('put', 'clients/create', {
-				vars: vars
-			}, callback);
-		},
 		add: function(vars, callback){
 			return blesta.request('put', 'clients/add', {
 				vars: vars
@@ -27,11 +22,6 @@ module.exports = function(blesta){
 			return blesta.request('post', 'clients/edit', {
 				client_id: client_id,
 				vars: vars
-			}, callback);
-		},
-		delete: function(client_id, callback){
-			return blesta.request('delete', 'clients/delete', {
-				client_id: client_id
 			}, callback);
 		},
 		delete: function(client_id, callback){
@@ -92,7 +82,7 @@ module.exports = function(blesta){
 		},
 		search: function(query, page, callback){
 			if(page && !callback){
-				callback = page
+				callback = page;
 				page = 1;
 			}
 			return blesta.request('get', 'clients/search', {
@@ -130,5 +120,5 @@ module.exports = function(blesta){
 				client_id: client_id
 			}, callback);
 		}
-	}
-}
+	};
+};

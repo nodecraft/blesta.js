@@ -23,5 +23,5 @@ module.exports = function(blesta){
 		validateAlpha3InUse: function(data, callback){
 			return blesta.request('post', 'countries/get', _.pick(data, ['alpha3', 'alpha2']), callback);
 		}
-	}
-}
+	};
+};

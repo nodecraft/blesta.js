@@ -1,6 +1,6 @@
 {
 	"name": "blesta",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Unofficial API Wrapper for the Blesta billing platform",
 	"repository": {
 		"type": "git",
@@ -8,7 +8,9 @@
 	},
 	"main": "blesta.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "npm run lint",
+		"lint": "eslint .",
+		"precommit": "lint"
 	},
 	"keywords": [
 		"blesta",
@@ -20,8 +22,14 @@
 	"author": "NodeCraft Hosting LLC",
 	"license": "MIT",
 	"dependencies": {
-		"lodash": "^4.16.4",
-		"moment": "^2.15.1",
-		"request": "^2.75.0"
+		"lodash": "^4.17.4",
+		"moment": "^2.19.3",
+		"request": "^2.83.0"
+	},
+	"devDependencies": {
+		"eslint": "4.8.0",
+		"eslint-config-nodecraft": "1.0.8",
+		"eslint-plugin-json": "1.2.0",
+		"eslint-plugin-node": "5.2.0"
 	}
 }

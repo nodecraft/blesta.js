@@ -148,24 +148,12 @@ module.exports = function(blesta){
 			}, _.pick(data, ['staff_id'])), callback);
 		},
 		getPriorities: function(callback){
-			if(data && !callback){
-				callback = data;
-				data = {};
-			}
 			return blesta.request('get', 'support_manager.SupportManagerTickets/getPriorities', {}, callback);
 		},
 		getStatuses: function(callback){
-			if(data && !callback){
-				callback = data;
-				data = {};
-			}
 			return blesta.request('get', 'support_manager.SupportManagerTickets/getStatuses', {}, callback);
 		},
 		getReplyTypes: function(callback){
-			if(data && !callback){
-				callback = data;
-				data = {};
-			}
 			return blesta.request('get', 'support_manager.SupportManagerTickets/getReplyTypes', {}, callback);
 		}
 	};

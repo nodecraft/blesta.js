@@ -55,5 +55,5 @@ module.exports = function(blesta){
 				query: query
 			}, _.pick(data, ['access'])), callback);
 		}
-	}
-}
+	};
+};

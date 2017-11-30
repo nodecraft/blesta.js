@@ -47,5 +47,5 @@ module.exports = function(blesta){
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbCategories/getCategories', _.pick(data, ['category_id', 'company_id']), callback);
 		}
-	}
-}
+	};
+};

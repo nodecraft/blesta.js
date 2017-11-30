@@ -44,12 +44,12 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'packages/search', _.defaults({
-				query : query
+				query: query
 			}, _.pick(data, ['page'])), callback);
 		},
 		getSearchCount: function(query, callback){
 			return blesta.request('get', 'packages/getSearchCount', {
-				query : query
+				query: query
 			}, callback);
 		},
 		getAllPackagesByGroup: function(package_group_id, data, callback){
@@ -58,7 +58,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'packages/getAllPackagesByGroup', _.defaults({
-				package_group_id : package_group_id
+				package_group_id: package_group_id
 			}, _.pick(data, ['status'])), callback);
 		},
 		convertPricing: function(pricing, data, callback){
@@ -67,8 +67,8 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('post', 'packages/convertPricing', _.defaults({
-				pricing : pricing
+				pricing: pricing
 			}, _.pick(data, ['currency', 'allow_conversion'])), callback);
 		}
-	}
-}
+	};
+};

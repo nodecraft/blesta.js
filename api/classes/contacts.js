@@ -65,5 +65,5 @@ module.exports = function(blesta){
 				company_id: company_id
 			}, callback);
 		}
-	}
-}
+	};
+};

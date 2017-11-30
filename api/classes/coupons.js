@@ -22,17 +22,17 @@ module.exports = function(blesta){
 				company_id: company_id
 			}, callback);
 		},
-		getCouponAmounts: function(coupon_id , callback){
+		getCouponAmounts: function(coupon_id, callback){
 			return blesta.request('get', 'coupons/getCouponAmounts', {
-				coupon_id : coupon_id 
+				coupon_id: coupon_id
 			}, callback);
 		},
-		get: function(coupon_id , callback){
+		get: function(coupon_id, callback){
 			return blesta.request('get', 'coupons/get', {
-				coupon_id : coupon_id 
+				coupon_id: coupon_id
 			}, callback);
 		},
-		getForPackages: function(data , callback){
+		getForPackages: function(data, callback){
 			return blesta.request('post', 'coupons/getForPackages', _.pick(data, ['code', 'coupon_id', 'packages']), callback);
 		},
 		add: function(vars, callback){
@@ -51,10 +51,10 @@ module.exports = function(blesta){
 				coupon_id: coupon_id,
 			}, callback);
 		},
-		incrementUsage: function(coupon_id , callback){
+		incrementUsage: function(coupon_id, callback){
 			return blesta.request('post', 'coupons/incrementUsage', {
-				coupon_id : coupon_id 
+				coupon_id: coupon_id
 			}, callback);
 		}
-	}
-}
+	};
+};

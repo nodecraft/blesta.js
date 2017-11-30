@@ -9,7 +9,7 @@ var _ = require('lodash'),
 	moment = require('moment');
 
 var blesta = function(options){
-	if(!this instanceof blesta){
+	if(!(this instanceof blesta)){
 		return new blesta(options);
 	}
 
@@ -23,8 +23,8 @@ var blesta = function(options){
 
 	// returns moment date
 	this.parseDate = function(date){
-		return moment(date)
-	}
+		return moment(date);
+	};
 
 	// create format: YYYY-MM-DDThh:mm:ssZ / 2021-12-31T12:00:00Z
 	this.createDate = function(date){
@@ -34,7 +34,7 @@ var blesta = function(options){
 			date = moment(date);
 		}
 		return date.format("Y");
-	}
+	};
 
 	// default errors
 	this.errors = {
@@ -51,7 +51,7 @@ var blesta = function(options){
 	this.error = function(code, data){
 		//Error.captureStackTrace(this, this.constructor);
 		if(!this.errors[code]){
-			throw new Error('Invalid error code `'+ code + '` provided.');
+			throw new Error('Invalid error code `' + code + '` provided.');
 		}
 		var message = this.errors[code];
 		if(data && data.message){
@@ -62,7 +62,7 @@ var blesta = function(options){
 		error.code = code;
 		error.data = _.omit(data || {}, ['message']);
 		return error;
-	}
+	};
 
 	this.request = function(method, url, body, callback){
 		var self = this;
@@ -80,35 +80,33 @@ var blesta = function(options){
 			json: true,
 			method: method
 		};
+		req = _.defaults(req, this.options);
+
 		if(body && method === 'get'){
 			req.qs = body;
 		}else if(body){
 			req.form = body;
 		}
 		return request(req, function(err, res, body){
+			if(err){
+				return callback(self.error('blesta.bad_request', err));
+			}
 			switch(res.statusCode){
 				case 400:
 					return callback(self.error('blesta.bad_request', body));
-				break;
 				case 401:
 					return callback(self.error('blesta.unauthorized', body));
-				break;
 				case 403:
 					return callback(self.error('blesta.forbidden', body));
-				break;
 				case 404:
 					body.url = req.url;
 					return callback(self.error('blesta.not_found', body));
-				break;
 				case 415:
 					return callback(self.error('blesta.not_supported', body));
-				break;
 				case 500:
 					return callback(self.error('blesta.error', body));
-				break;
 				case 503:
 					return callback(self.error('blesta.maintenance', body));
-				break;
 				case 200:
 					var response = body.response;
 					if(response && response.settings){
@@ -118,10 +116,8 @@ var blesta = function(options){
 						return callback(self.error('blesta.error'));
 					}
 					return callback(null, response, res);
-				break;
 				default:
 					return callback(self.error('blesta.not_handled', body));
-				break;
 			}
 		});
 	};
@@ -134,6 +130,6 @@ var blesta = function(options){
 			self[path.basename(file, '.js')] = require(dir + '/' + file)(self);
 		});
 	});
-}
+};
 
 module.exports = blesta;

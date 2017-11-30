@@ -10,9 +10,9 @@ module.exports = function(blesta){
 	var _ = require('lodash');
 
 	return {
-		get: function(service_id , callback){
+		get: function(service_id, callback){
 			return blesta.request('get', 'services/get', {
-				service_id : service_id
+				service_id: service_id
 			}, callback);
 		},
 		getList: function(data, callback){
@@ -28,24 +28,28 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'services/search', _.defaults({
-				query : query
+				query: query
 			}, _.pick(data, ['page', 'search_fields '])), callback);
 		},
-		getSearchCount: function(query, callback){
+		getSearchCount: function(query, data, callback){
+			if(data && !callback){
+				callback = data;
+				data = {};
+			}
 			return blesta.request('get', 'services/getSearchCount', _.defaults({
-				query : query
+				query: query
 			}, _.pick(data, ['page', 'search_fields '])), callback);
 		},
 		cancel: function(service_id, vars, callback){
 			return blesta.request('get', 'services/cancel', {
-				service_id : service_id,
+				service_id: service_id,
 				vars: vars
 			}, callback);
 		},
 		unCancel: function(service_id, callback){
 			return blesta.request('get', 'services/unCancel', {
-				service_id : service_id,
+				service_id: service_id,
 			}, callback);
 		},
-	}
-}
+	};
+};
