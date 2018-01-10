@@ -64,11 +64,11 @@ var blesta = function(options){
 		return error;
 	};
 
-	this.request = function(method, url, body, callback){
+	this.request = function(method, url, data, callback){
 		var self = this;
-		if(body && !callback){
-			callback = body;
-			body = null;
+		if(data && !callback){
+			callback = data;
+			data = null;
 		}
 		method = String(method).toLowerCase();
 		if(url.slice(0, 1) !== '/'){
@@ -82,10 +82,10 @@ var blesta = function(options){
 		};
 		req = _.defaults(req, this.options);
 
-		if(body && method === 'get'){
-			req.qs = body;
-		}else if(body){
-			req.form = body;
+		if(data && method === 'get'){
+			req.qs = data;
+		}else if(data){
+			req.form = data;
 		}
 		return request(req, function(err, res, body){
 			if(err){
@@ -108,6 +108,9 @@ var blesta = function(options){
 				case 503:
 					return callback(self.error('blesta.maintenance', body));
 				case 200:
+					if(typeof(body) === undefined){
+						return callback(self.error('blesta.error'));
+					}
 					var response = body.response;
 					if(response && response.settings){
 						delete response.settings;

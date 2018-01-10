@@ -1,6 +1,6 @@
 {
 	"name": "blesta",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"description": "Unofficial API Wrapper for the Blesta billing platform",
 	"repository": {
 		"type": "git",
@@ -23,13 +23,13 @@
 	"license": "MIT",
 	"dependencies": {
 		"lodash": "^4.17.4",
-		"moment": "^2.19.3",
+		"moment": "^2.20.1",
 		"request": "^2.83.0"
 	},
 	"devDependencies": {
-		"eslint": "4.8.0",
-		"eslint-config-nodecraft": "1.0.8",
+		"eslint": "4.15.0",
+		"eslint-config-nodecraft": "1.0.10",
 		"eslint-plugin-json": "1.2.0",
-		"eslint-plugin-node": "5.2.0"
+		"eslint-plugin-node": "5.2.1"
 	}
 }
