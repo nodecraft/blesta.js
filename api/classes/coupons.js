@@ -48,7 +48,7 @@ module.exports = function(blesta){
 		},
 		delete: function(coupon_id, vars, callback){
 			return blesta.request('delete', 'coupons/delete', {
-				coupon_id: coupon_id,
+				coupon_id: coupon_id
 			}, callback);
 		},
 		incrementUsage: function(coupon_id, callback){

@@ -48,8 +48,8 @@ module.exports = function(blesta){
 		},
 		unCancel: function(service_id, callback){
 			return blesta.request('get', 'services/unCancel', {
-				service_id: service_id,
+				service_id: service_id
 			}, callback);
-		},
+		}
 	};
 };

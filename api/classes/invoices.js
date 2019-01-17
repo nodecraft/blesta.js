@@ -181,6 +181,6 @@ module.exports = function(blesta){
 				invoice_id: invoice_id,
 				hash: hash
 			}, callback);
-		},
+		}
 	};
 };

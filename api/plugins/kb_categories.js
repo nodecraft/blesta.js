@@ -14,7 +14,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbCategories/getItemCount', _.defaults({
-				category_id: category_id,
+				category_id: category_id
 			}, _.pick(data, ['access'])), callback);
 		},
 		get: function(category_id, callback){
@@ -37,7 +37,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbCategories/getAllParents', _.defaults({
-				category_id: category_id,
+				category_id: category_id
 			}, _.pick(data, ['exclude'])), callback);
 		},
 		getCategories: function(data, callback){
