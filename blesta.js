@@ -43,7 +43,7 @@ var blesta = function(options){
 		"blesta.forbidden": "The requested resource is not accessible.",
 		"blesta.not_found": "The requested resource does not exist.",
 		"blesta.not_supported": "The format requested is not supported by the server.",
-		"blesta.error": "An unexpected error occurred.",
+		"blesta.error": "An unexpected error occured.",
 		"blesta.maintenance": "The requested resource is currently unavailable due to maintenance.",
 		"blesta.not_handled": "The request response returned an unexpected code."
 	};
@@ -112,11 +112,10 @@ var blesta = function(options){
 						return callback(self.error('blesta.error'));
 					}
 					var response = body && body.response || {};
-					if(response && response.settings){
+					if(response === undefined){
+						return callback(self.error('blesta.error', body));
+					}else if(response && response.settings){
 						delete response.settings;
-					}
-					if(!response || response === undefined){
-						return callback(self.error('blesta.error'));
 					}
 					return callback(null, response, res);
 				default:
