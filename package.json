@@ -1,6 +1,6 @@
 {
 	"name": "blesta",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"description": "Unofficial API Wrapper for the Blesta billing platform",
 	"repository": {
 		"type": "git",
