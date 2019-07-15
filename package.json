@@ -1,6 +1,6 @@
 {
 	"name": "blesta",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"description": "Unofficial API Wrapper for the Blesta billing platform",
 	"repository": {
 		"type": "git",
@@ -27,8 +27,8 @@
 		"request": "^2.88.0"
 	},
 	"devDependencies": {
-		"eslint": "5.16.0",
-		"eslint-config-nodecraft": "1.6.0",
+		"eslint": "6.0.1",
+		"eslint-config-nodecraft": "1.7.1",
 		"eslint-plugin-json": "1.4.0",
 		"eslint-plugin-node": "9.1.0"
 	}
