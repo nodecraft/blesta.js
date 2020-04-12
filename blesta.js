@@ -1,14 +1,14 @@
 'use strict';
 
-var path = require('path'),
+const path = require('path'),
 	util = require('util'),
 	fs = require('fs');
 
-var _ = require('lodash'),
+const _ = require('lodash'),
 	request = require('request'),
 	moment = require('moment');
 
-var blesta = function(options){
+const blesta = function(options){
 	if(!(this instanceof blesta)){
 		return new blesta(options);
 	}
@@ -53,19 +53,24 @@ var blesta = function(options){
 		if(!this.errors[code]){
 			throw new Error('Invalid error code `' + code + '` provided.');
 		}
-		var message = this.errors[code];
+		let message = this.errors[code];
 		if(data && data.message){
 			message = data.message;
 		}
-		var error = new Error(message);
+		const error = new Error(message);
 		error.name = 'blestaError';
 		error.code = code;
+
+		// check if data is still somehow a string (bad HTML response?)
+		if(typeof(data) === 'string'){
+			data = {body: data};
+		}
 		error.data = _.omit(data || {}, ['message']);
 		return error;
 	};
 
 	this.request = function(method, url, data, callback){
-		var self = this;
+		const self = this;
 		if(data && !callback){
 			callback = data;
 			data = null;
@@ -74,7 +79,7 @@ var blesta = function(options){
 		if(url.slice(0, 1) !== '/'){
 			url = '/' + url;
 		}
-		var req = {
+		let req = {
 			url: util.format('%s/api%s.json', options.url, url),
 			auth: options.auth,
 			json: true,
@@ -107,17 +112,22 @@ var blesta = function(options){
 					return callback(self.error('blesta.error', body));
 				case 503:
 					return callback(self.error('blesta.maintenance', body));
-				case 200:
+				case 200:{
 					if(typeof(body) === undefined){
 						return callback(self.error('blesta.error'));
 					}
-					var response = body && body.response || {};
+					if(res.headers && res.headers['content-type'] && !res.headers['content-type'].includes('application/json')){
+						// not a valid JSON response
+						return callback(self.error('blesta.error', body));
+					}
+					const response = body && body.response || {};
 					if(response === undefined){
 						return callback(self.error('blesta.error', body));
 					}else if(response && response.settings){
 						delete response.settings;
 					}
 					return callback(null, response, res);
+				}
 				default:
 					return callback(self.error('blesta.not_handled', body));
 			}
@@ -125,9 +135,9 @@ var blesta = function(options){
 	};
 
 
-	var self = this;
+	const self = this;
 	_.each(fs.readdirSync(__dirname + '/api'), function(folder){
-		var dir = __dirname + '/api/' + folder;
+		const dir = __dirname + '/api/' + folder;
 		_.each(fs.readdirSync(dir), function(file){
 			self[path.basename(file, '.js')] = require(dir + '/' + file)(self);
 		});

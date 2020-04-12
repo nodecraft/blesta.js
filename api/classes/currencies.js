@@ -5,7 +5,7 @@
 */
 
 module.exports = function(blesta){
-	var _ = require('lodash');
+	const _ = require('lodash');
 
 	return {
 		getList: function(company_id, data, callback){

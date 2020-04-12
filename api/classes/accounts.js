@@ -7,7 +7,7 @@
 */
 
 module.exports = function(blesta){
-	var _ = require('lodash');
+	const _ = require('lodash');
 
 	return {
 		getListCc: function(contact_id, data, callback){

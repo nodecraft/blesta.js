@@ -7,7 +7,7 @@ Model
 */
 
 module.exports = function(blesta){
-	var _ = require('lodash');
+	const _ = require('lodash');
 
 	return {
 		get: function(service_id, callback){
