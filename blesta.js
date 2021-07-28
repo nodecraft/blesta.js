@@ -1,12 +1,12 @@
 'use strict';
 
-const path = require('path'),
-	util = require('util'),
-	fs = require('fs');
+const path = require('path');
+const {format} = require('util');
+const fs = require('fs');
 
-const _ = require('lodash'),
-	request = require('request'),
-	moment = require('moment');
+const _ = require('lodash');
+const request = require('request');
+const moment = require('moment');
 
 const blesta = function(options){
 	if(!(this instanceof blesta)){
@@ -17,8 +17,8 @@ const blesta = function(options){
 		url: 'http://localhost:80',
 		auth: {
 			username: "admin",
-			password: "password"
-		}
+			password: "password",
+		},
 	});
 
 	// returns moment date
@@ -45,7 +45,7 @@ const blesta = function(options){
 		"blesta.not_supported": "The format requested is not supported by the server.",
 		"blesta.error": "An unexpected error occured.",
 		"blesta.maintenance": "The requested resource is currently unavailable due to maintenance.",
-		"blesta.not_handled": "The request response returned an unexpected code."
+		"blesta.not_handled": "The request response returned an unexpected code.",
 	};
 
 	this.error = function(code, data){
@@ -80,10 +80,11 @@ const blesta = function(options){
 			url = '/' + url;
 		}
 		let req = {
-			url: util.format('%s/api%s.json', options.url, url),
+			url: format('%s/api%s.json', options.url, url),
 			auth: options.auth,
 			json: true,
-			method: method
+			method: method,
+			timeout: 30 * 1000, // 30 seconds
 		};
 		req = _.defaults(req, this.options);
 

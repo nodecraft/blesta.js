@@ -1,18 +1,7 @@
 {
 	"name": "blesta",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"description": "Unofficial API Wrapper for the Blesta billing platform",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/nodecraft/blesta.js.git"
-	},
-	"main": "blesta.js",
-	"scripts": {
-		"test": "npm run lint",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
-		"precommit": "lint"
-	},
 	"keywords": [
 		"blesta",
 		"billing",
@@ -20,17 +9,29 @@
 		"wrapper",
 		"json"
 	],
-	"author": "Nodecraft, Inc.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nodecraft/blesta.js.git"
+	},
 	"license": "MIT",
+	"author": "Nodecraft, Inc.",
+	"main": "blesta.js",
+	"scripts": {
+		"test": "npm run lint",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"precommit": "lint"
+	},
 	"dependencies": {
-		"lodash": "^4.17.15",
-		"moment": "^2.24.0",
+		"lodash": "^4.17.21",
+		"moment": "^2.29.1",
 		"request": "^2.88.2"
 	},
 	"devDependencies": {
-		"eslint": "6.8.0",
-		"eslint-config-nodecraft": "3.0.2",
-		"eslint-plugin-json": "2.1.1",
-		"eslint-plugin-node": "11.1.0"
+		"@nodecraft/eslint-config": "^9.0.0",
+		"eslint": "^7.30.0",
+		"eslint-plugin-json": "^3.0.0",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-unicorn": "^34.0.1"
 	}
 }

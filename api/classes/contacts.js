@@ -10,23 +10,23 @@ module.exports = function(blesta){
 	return {
 		add: function(vars, callback){
 			return blesta.request('put', 'contacts/add', {
-				vars: vars
+				vars: vars,
 			}, callback);
 		},
 		edit: function(contact_id, vars, callback){
 			return blesta.request('put', 'contacts/edit', {
 				contact_id: contact_id,
-				vars: vars
+				vars: vars,
 			}, callback);
 		},
 		delete: function(contact_id, callback){
 			return blesta.request('delete', 'contacts/delete', {
-				contact_id: contact_id
+				contact_id: contact_id,
 			}, callback);
 		},
 		get: function(contact_id, callback){
 			return blesta.request('get', 'contacts/get', {
-				contact_id: contact_id
+				contact_id: contact_id,
 			}, callback);
 		},
 		getList: function(client_id, data, callback){
@@ -35,12 +35,12 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'contacts/get', _.defaults({
-				client_id: client_id
+				client_id: client_id,
 			}, _.pick(data, ['page', 'order'])), callback);
 		},
 		getListCount: function(client_id, callback){
 			return blesta.request('get', 'contacts/get', {
-				client_id: client_id
+				client_id: client_id,
 			}, callback);
 		},
 		getAll: function(client_id, data, callback){
@@ -49,7 +49,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'contacts/get', _.defaults({
-				client_id: client_id
+				client_id: client_id,
 			}, _.pick(data, ['contact_type', 'order'])), callback);
 		},
 		getContactTypes: function(callback){
@@ -57,13 +57,13 @@ module.exports = function(blesta){
 		},
 		getType: function(contact_type_id, callback){
 			return blesta.request('put', 'contacts/getType', {
-				contact_type_id: contact_type_id
+				contact_type_id: contact_type_id,
 			}, callback);
 		},
 		getTypes: function(company_id, callback){
 			return blesta.request('put', 'contacts/getType', {
-				company_id: company_id
+				company_id: company_id,
 			}, callback);
-		}
+		},
 	};
 };

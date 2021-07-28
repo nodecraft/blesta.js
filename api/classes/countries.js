@@ -17,11 +17,11 @@ module.exports = function(blesta){
 		},
 		get: function(code, callback){
 			return blesta.request('get', 'countries/get', {
-				code: code
+				code: code,
 			}, callback);
 		},
 		validateAlpha3InUse: function(data, callback){
 			return blesta.request('post', 'countries/get', _.pick(data, ['alpha3', 'alpha2']), callback);
-		}
+		},
 	};
 };

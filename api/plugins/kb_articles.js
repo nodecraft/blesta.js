@@ -11,12 +11,12 @@ module.exports = function(blesta){
 		vote: function(article_id, direction, callback){
 			return blesta.request('get', 'support_manager.SupportManagerKbArticles/vote', {
 				article_id: article_id,
-				direction: direction || 'up'
+				direction: direction || 'up',
 			}, callback);
 		},
 		get: function(article_id, callback){
 			return blesta.request('get', 'support_manager.SupportManagerKbArticles/get', {
-				article_id: article_id
+				article_id: article_id,
 			}, callback);
 		},
 		getAll: function(data, callback){
@@ -32,7 +32,7 @@ module.exports = function(blesta){
 				data = {};
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbArticles/getPopular', _.defaults({
-				company_id: company_id
+				company_id: company_id,
 			}, _.pick(data, ['category_id', 'access', 'max_articles'])), callback);
 		},
 		search: function(company_id, query, data, callback){
@@ -42,7 +42,7 @@ module.exports = function(blesta){
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbArticles/search', _.defaults({
 				company_id: company_id,
-				query: query
+				query: query,
 			}, _.pick(data, ['access', 'page'])), callback);
 		},
 		getSearchCount: function(company_id, query, data, callback){
@@ -52,8 +52,8 @@ module.exports = function(blesta){
 			}
 			return blesta.request('get', 'support_manager.SupportManagerKbArticles/getSearchCount', _.defaults({
 				company_id: company_id,
-				query: query
+				query: query,
 			}, _.pick(data, ['access'])), callback);
-		}
+		},
 	};
 };
